@@ -1,7 +1,9 @@
-for (let i = 0; i < document.querySelectorAll("button").length; i++){
-    document.querySelectorAll("button")[i].addEventListener("click", clickHandler);
+for (let i = 0; i < document.querySelectorAll(".drum").length; i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click", clickHandler);
 }
 
 function clickHandler() {
-    alert("I got clicked!");
+    var soundPath = "sounds/" + this.id +".mp3";
+    var sound = new Audio(soundPath);
+    sound.play();
 }
