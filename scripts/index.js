@@ -1,9 +1,16 @@
 for (let i = 0; i < document.querySelectorAll(".drum").length; i++){
-    document.querySelectorAll(".drum")[i].addEventListener("click", clickHandler);
+    document.querySelectorAll(".drum")[i].addEventListener("click", function() {
+        var key = this.innerHTML;
+        playSound(key);
+    })
 }
 
 document.addEventListener("keydown", (event) => {
-    switch (event.key) {
+    playSound(event.key);
+})
+
+function playSound(key) {
+    switch (key) {
         case "w":
             var crash = new Audio('sounds/crash.mp3');
             crash.play();
@@ -33,16 +40,4 @@ document.addEventListener("keydown", (event) => {
             tom4.play();
             break;
     }
-}
-);
-
-function clickHandler() {
-    var soundPath = "sounds/" + this.id +".mp3";
-    var sound = new Audio(soundPath);
-    sound.play();
-}
-
-function keyHandler() {
-    alert("key pressed");
-
 }
